@@ -5,12 +5,17 @@
 ########################################################################## */
 
 // ----- CUSTOMISE THE STIMULI AND RESPONSES -----
+
+// define the site that hosts stimuli images
+// usually https://<your-github-username>.github.io/<your-experiment-name>/
+var repo_site = 'https://kywch.github.io/STOP-IT/jsPsych_version/';
+
 // locate the stimuli that will be used in the experiment
-var fix_stim = 'images/fix.png';
-var go_stim1 = 'images/go_left.png';
-var go_stim2 = 'images/go_right.png';
-var stop_stim1 = 'images/stop_left.png';
-var stop_stim2 = 'images/stop_right.png';
+var fix_stim = repo_site + 'images/fix.png';
+var go_stim1 = repo_site + 'images/go_left.png';
+var go_stim2 = repo_site + 'images/go_right.png';
+var stop_stim1 = repo_site + 'images/stop_left.png';
+var stop_stim2 = repo_site + 'images/stop_right.png';
 
 
 // define the appropriate response (key) for each stimulus
