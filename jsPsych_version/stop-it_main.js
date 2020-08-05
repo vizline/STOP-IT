@@ -201,12 +201,14 @@ var stimulus = {
     on_finish: function (data) {
 
         // check if the response was correct
-        data.response = jsPsych.pluginAPI.convertKeyCodeToKeyCharacter(data
-            .key_press); // keys are stored in keycodes not in character, so convert for convenience
-
-        data.response = String(data
-            .response); // convert explicitly to string so that "undefined" (no response) does not lead to empty cells in the datafile
-        data.correct = data.response == data.correct_response;
+        // keys are stored in keycodes not in character, so convert for convenience
+        if (data.key_press == null) {
+            // convert explicitly to string so that "undefined" (no response) does not lead to empty cells in the datafile
+            data.response = "undefined";
+        } else {
+            data.response = jsPsych.pluginAPI.convertKeyCodeToKeyCharacter(data.key_press);
+        }
+        data.correct = (data.response == data.correct_response);
 
         // if no response was made, the reaction time should not be -250 but null
         if (data.rt == -250) {
@@ -228,11 +230,17 @@ var stimulus = {
                 if (SSD >= MAXRT) {
                     SSD = MAXRT - SSDstep
                 };
+                if (flag_debug) {
+                    console.log('Correct stop, SSD increased: ', SSD);
+                }
             } else {
                 SSD = SSD - SSDstep;
                 if (SSD <= SSDstep) {
                     SSD = SSDstep
                 };
+                if (flag_debug) {
+                    console.log('Failed stop, SSD decreased: ', SSD);
+                }
             }
         }
     }
@@ -392,14 +400,14 @@ var feedback_node = {
     timeline: [trial_feedback],
 
     conditional_function: function () {
-      var last_trial_data = jsPsych.data.get().last(1).values()[0];
-      var current_block = block_ind;
-      if (current_block == 0) {
-        // this was previously set to provide feedback only on incorrect trials by adding: && last_trial_data['correct']==false
-        return true;
-      } else {
-        return false;
-      }
+        var last_trial_data = jsPsych.data.get().last(1).values()[0];
+        var current_block = block_ind;
+        if (current_block == 0) {
+            // this was previously set to provide feedback only on incorrect trials by adding: && last_trial_data['correct']==false
+            return true;
+        } else {
+            return false;
+        }
     }
 };
 
