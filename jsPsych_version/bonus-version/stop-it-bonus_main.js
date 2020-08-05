@@ -509,7 +509,6 @@ var block_feedback = {
         return block_summary;
     },
     on_finish: function () {
-        save_data(dropbox_access_token, save_filename);
         trial_ind = 1; // reset trial counter
         block_ind = block_ind + 1; // next block
         if (grant_bonus) {
