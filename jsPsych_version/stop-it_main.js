@@ -11,7 +11,7 @@
 /*
  * Generic task variables for Qualtrics
  */
-var sbjId = ""; // mturk id
+var sbj_id = ""; // mturk id
 var task_id = ""; // the prefix for the save file -- the main seq
 var data_dir = "";
 var flag_debug = false;
