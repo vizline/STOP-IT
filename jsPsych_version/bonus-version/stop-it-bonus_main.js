@@ -92,13 +92,13 @@ var block_bonus = 0;
 var bonus_feedback = 'simple';
 
 function bonus_RT_comp(avg_RT) {
-    var crit_RT = 550;
+    var crit_RT = 800;
     if (avg_RT > crit_RT) {
         // no bonus
         return 0;
     } else {
-        // the maximum is 75: if avg_RT is less than 325 ms, that's too fast
-        return Math.min(75, Math.round((crit_RT - avg_RT) / 3));
+        // the maximum is 75: one gets the maximum bonus when their RT is below 350 ms
+        return Math.min(75, Math.round((crit_RT - avg_RT) / 6));
     }
 }
 
