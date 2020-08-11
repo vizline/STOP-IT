@@ -186,9 +186,9 @@ if (flag_debug) {
  * Instruction block
  */
 var bonus_desc_page1 = '<div class = centerbox><p class = block-text>The <b>performance-based bonus</b> is determined by multiplying RT score, GO score, and STOP score.</p></div>';
-var bonus_desc_page2 = '<div class = centerbox><p class = block-text><b>RT score</b> is (550 ms - your response time) / 3.</p>' +
-    ' <p class = block-text>If your response time is larger (slower) than 550ms you get no bonus. So please respond as quickly as possible.</p>' +
-    ' <p class = block-text>However, the maximum RT score is 75, so responding faster than 325 ms gives you the same 75.</p></div>'
+var bonus_desc_page2 = '<div class = centerbox><p class = block-text><b>RT score</b> is (800 ms - your response time) / 6.</p>' +
+    ' <p class = block-text>If your response time is larger (slower) than 800ms you get no bonus. So please respond as quickly as possible.</p>' +
+    ' <p class = block-text>However, the maximum RT score is 75, so responding faster than 350 ms gives you the same 75.</p></div>'
 var bonus_desc_page3 = '<div class = centerbox><p class = block-text><b>GO score</b> is <br>(0.25 - the proportion of misses and incorrects) / 0.25.</p>' +
     ' <p class = block-text>If you do not have any misses or incorrects, GO score becomes 1.</p>' +
     ' <p class = block-text>If you miss or respond incorrectly more than 25% of the trials, GO score becomes 0, and you get no bonus. So, please try your best to respond correclty.</p></div>';
