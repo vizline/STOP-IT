@@ -48,9 +48,7 @@ Qualtrics.SurveyEngine.addOnload(function () {
     jQuery("<div id = 'display_stage_background'></div>").appendTo('body');
     jQuery("<div id = 'display_stage'></div>").appendTo('body');
 
-    /*
-     * Helper functions for saving data
-     */
+    /* Change 4: Adding save and helper functions */    
     function filter_data() {
         var ignore_columns = ['raw_rt', 'trial_type', 'first_stimulus', 'second_stimulus', 'onset_of_first_stimulus',
             'onset_of_second_stimulus', 'key_press', 'correct_response', 'trial_index', 'internal_node_id'
@@ -80,7 +78,6 @@ Qualtrics.SurveyEngine.addOnload(function () {
         return selected_data;
     }
 
-    /* Change 5: Defining save functions using Dropbox API */
     function save_data(dropbox_access_token, save_filename) {
         console.log("Save data function called.");
         var selected_data = filter_data();
@@ -179,7 +176,6 @@ Qualtrics.SurveyEngine.addOnload(function () {
 
                 // simulate click on Qualtrics "next" button, making use of the Qualtrics JS API
                 qthis.clickNextButton();
-
             }
         });
     }

@@ -55,4 +55,4 @@ var text_at_start_block = '<p>Press space to begin.</p>'
 var get_ready_message = '<p>Get ready...</p>'
 var fixation_text = '<div style="font-size:60px;">TEST</div>'
 var end_message = "<p>Thank you for your participation.</p>" +
-  "<p>Press space to finalize the experiment (redirect to XXX).</p>"
+  "<p>Press space to finalize the experiment.</p>"
