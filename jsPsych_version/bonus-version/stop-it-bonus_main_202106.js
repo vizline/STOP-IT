@@ -409,18 +409,18 @@ var trial_feedback_to_negRT = {
     choices: jsPsych.NO_KEYS,
     trial_duration: function() {
         var last_trial_data = jsPsych.data.get().last(1).values()[0];
-        if (last_trial_data['rt'] >= 0) {
-            return 0;
-        } else {
+        if (!last_trial_data['correct'] & (last_trial_data['rt'] < 0)) {
             return toFBT;
+        } else {
+            return 0;
         }
     },
     stimulus: function() {
         var last_trial_data = jsPsych.data.get().last(1).values()[0];
-        if (last_trial_data['rt'] >= 0) {
-            return '';
-        } else {
+        if (!last_trial_data['correct'] & (last_trial_data['rt'] < 0)) {
             return '<p class = center-text><font color=red>TOO FAST</font></p>';
+        } else {
+            return '';
         }
     }
 };
