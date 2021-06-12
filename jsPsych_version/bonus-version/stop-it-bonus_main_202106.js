@@ -80,9 +80,9 @@ var MAXRT = 1850; // fixed maximum reaction time
 var SSD = 300; // start value for the SSD tracking procedure; will be updated throughout the experiment
 var SSDstep = 50; // step size of the SSD tracking procedure; this is also the lowest possible SSD
 var MINSSD = 100; // the minimum SSD
-var iFBT = 750; // immediate feedback interval (during the practice phase)
+var iFBT = 500; // immediate feedback interval (during the practice phase)
 var bFBT = 15000; // break interval between blocks
-var toFBT = 5000; // time-out feedback interval after negative RT trials
+var toFBT = 3000; // time-out feedback interval after negative RT trials
 
 // Bonus-related variables
 // To change the bonus, modify crit_RT and crit_prop below
@@ -362,7 +362,14 @@ var stop_signal_trial = {
 var trial_feedback = {
     type: 'html-keyboard-response',
     choices: jsPsych.NO_KEYS,
-    trial_duration: iFBT,
+    trial_duration: function() {
+        var last_trial_data = jsPsych.data.get().last(1).values()[0];
+        if (last_trial_data['correct']) {
+            return iFBT;
+        } else {
+            return toFBT;
+        }
+    },
     stimulus: function () {
         var last_trial_data = jsPsych.data.get().last(1).values()[0];
         if (last_trial_data['signal'] === 'no') {
