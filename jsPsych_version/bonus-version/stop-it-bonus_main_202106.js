@@ -205,7 +205,7 @@ var bonus_desc_page5 = '<div class = centerbox><p class = block-text>Please reme
 var bonus_desc_simple =
     '<div class = centerbox><p class = block-text>The <b>performance-based bonus</b> is determined by how fast and accurate you are on the task.' +
     ' The task is set up so that you should be able to stop yourself from responding 50% of the time the stop signal occurs.</p>' +
-    ' <p class = block-test>The closer you are at successfully stopping 50% of the time on trials with stop signals while responding as accurately and quickly as possible on trials without stop signals, the higher your bonus will be.</p>' +
+    ' <p class = block-text>The closer you are at successfully stopping 50% of the time on trials with stop signals while responding as accurately and quickly as possible on trials without stop signals, the higher your bonus will be.</p>' +
     ' <p class = block-text>The maximum bonus you can earn in a block is <b>75 cents</b>.</p></div>';
 
 function generate_instruction_block() {
@@ -417,7 +417,7 @@ var trial_feedback_to_negRT = {
     stimulus: function() {
         var last_trial_data = jsPsych.data.get().last(1).values()[0];
         if (last_trial_data['rt'] >= 0) {
-            return '<img src="'+fix_stim+'"id="jspsych-image-keyboard-response-stimulus"></img>';
+            return '';
         } else {
             return '<p class = center-text><font color=red>TOO FAST</font></p>';
         }
