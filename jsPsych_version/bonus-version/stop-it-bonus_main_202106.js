@@ -10,7 +10,6 @@
  * Generic task variables
  */
 var flag_debug = false;
-var qthis = '';
 
 /* 
  * STOP-IT specific variables
