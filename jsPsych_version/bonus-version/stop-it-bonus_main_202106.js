@@ -73,12 +73,13 @@ var NexpBL = 4;
 var prac_offset = 1; // accounting for the second practice
 
 // ----- CUSTOMISE THE TIME INTERVALS -----
-var ITI = 500; // fixed blank intertrial interval
-var FIX = 250; // fixed fixation presentation
+// Following Bissett et al., 2021 "Severe violations of independence in response inhibition tasks"
+var ITI = 1000; // fixed blank intertrial interval
+var FIX = 500; // fixed fixation presentation
 var MAXRT = 1850; // fixed maximum reaction time
 var SSD = 300; // start value for the SSD tracking procedure; will be updated throughout the experiment
 var SSDstep = 50; // step size of the SSD tracking procedure; this is also the lowest possible SSD
-var MINSSD = 200; // the minimum SSD
+var MINSSD = 100; // the minimum SSD
 var iFBT = 750; // immediate feedback interval (during the practice phase)
 var bFBT = 15000; // break interval between blocks
 var toFBT = 5000; // time-out feedback interval after negative RT trials
@@ -90,12 +91,12 @@ var block_bonus = 0;
 var bonus_feedback = 'simple';
 
 function bonus_RT_comp(avg_RT) {
-    var crit_RT = 800;
+    var crit_RT = 900;
     if (avg_RT > crit_RT) {
         // no bonus
         return 0;
     } else {
-        // the maximum is 75: one gets the maximum bonus when their RT is below 350 ms
+        // the maximum is 75: one gets the maximum bonus when their RT is below 450 ms
         return Math.min(75, Math.round((crit_RT - avg_RT) / 6));
     }
 }
