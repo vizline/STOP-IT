@@ -10,6 +10,7 @@
  * Generic task variables
  */
 var flag_debug = false;
+var qthis = '';
 
 /* 
  * STOP-IT specific variables
@@ -346,7 +347,7 @@ var stop_signal_trial = {
                 if (SSD <= MINSSD) {
                     SSD = MINSSD;
                     if (flag_debug) {
-                        console.log('Failed stop, SSD stayed at the minimum SSD: ', SSD);
+                        console.log('Failed stop, SSD reached at the minimum SSD: ', SSD);
                     }
                 } else {
                     if (flag_debug) {
