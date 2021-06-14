@@ -416,9 +416,9 @@ var trial_feedback_to_negRT = {
     choices: jsPsych.NO_KEYS,
     trial_duration: function() {
         var last_trial_data = jsPsych.data.get().last(1).values()[0];
-        if (!last_trial_data['correct'] & (last_trial_data['rt'] < 0)) {
+        if ((last_trial_data['signal'] === 'no') & (last_trial_data['response'] === "undefined")) {
             return toFBT;
-        } else if (last_trial_data['response'] === "undefined") {
+        } else if (!last_trial_data['correct'] & (last_trial_data['rt'] < 0)) {
             return toFBT;
         } else {
             return 0;
@@ -426,10 +426,10 @@ var trial_feedback_to_negRT = {
     },
     stimulus: function() {
         var last_trial_data = jsPsych.data.get().last(1).values()[0];
-        if (!last_trial_data['correct'] & (last_trial_data['rt'] < 0)) {
-            return '<p class = center-text><font color=red>TOO FAST</font></p>';
-        } else if (last_trial_data['response'] === "undefined") {
+        if ((last_trial_data['signal'] === 'no') & (last_trial_data['response'] === "undefined")) {
             return '<p class = center-text><font color=red>TOO SLOW</font></p>';
+        } else if (!last_trial_data['correct'] & (last_trial_data['rt'] < 0)) {
+            return '<p class = center-text><font color=red>TOO FAST</font></p>';
         } else {
             return '';
         }
