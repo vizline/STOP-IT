@@ -316,7 +316,7 @@ var stop_signal_trial = {
     // was the response correct? adapt SSD accordingly    
     on_finish: function (data) {
         
-        console.log('Check variable FIX duration: ', data.onset_of_first_stimulus);
+        // console.log('Variable FIX duration: ', data.onset_of_first_stimulus);
         
         // check if the response was correct
         // keys are stored in keycodes not in character, so convert for convenience
