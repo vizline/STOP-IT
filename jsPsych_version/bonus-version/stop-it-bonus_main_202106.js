@@ -315,6 +315,9 @@ var stop_signal_trial = {
     data: jsPsych.timelineVariable('data'),
     // was the response correct? adapt SSD accordingly    
     on_finish: function (data) {
+        
+        console.log('Variable FIX duration: ', data.fixation_duration);
+        
         // check if the response was correct
         // keys are stored in keycodes not in character, so convert for convenience
         if (data.key_press == null) {
