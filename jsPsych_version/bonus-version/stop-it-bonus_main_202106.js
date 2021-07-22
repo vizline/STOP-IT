@@ -75,7 +75,13 @@ var prac_offset = 1; // accounting for the second practice
 // ----- CUSTOMISE THE TIME INTERVALS -----
 // Following Bissett et al., 2021 "Severe violations of independence in response inhibition tasks"
 var ITI = 1000; // fixed blank intertrial interval
-var FIX = 500; // fixed fixation presentation
+//var FIX = 500; // fixed fixation presentation
+// The below function generates a random fixation duration among 400, 450, 500, 550, 600, 650, 700 
+function getRandomFIX() {
+    min = Math.ceil(0);
+    max = Math.floor(6);
+    return 400 + 50 * Math.floor(Math.random() * (max - min + 1) + min);
+}
 var MAXRT = 1850; // fixed maximum reaction time
 var SSD = 300; // start value for the SSD tracking procedure; will be updated throughout the experiment
 var SSDstep = 50; // step size of the SSD tracking procedure; this is also the lowest possible SSD
@@ -294,7 +300,9 @@ var held_down_node = {
 var stop_signal_trial = {
     type: 'custom-stop-signal-plugin',
     fixation: jsPsych.timelineVariable('fixation'),
-    fixation_duration: FIX,
+    fixation_duration: function() {
+        return getRandomFIX();
+    },
     stimulus1: jsPsych.timelineVariable('first_stimulus'),
     stimulus2: jsPsych.timelineVariable('second_stimulus'),
     trial_duration: MAXRT, // this is the max duration of the actual stimulus (excluding fixation time)
