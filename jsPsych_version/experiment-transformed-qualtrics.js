@@ -14,7 +14,7 @@ Qualtrics.SurveyEngine.addOnload(function () {
 
     // requiredResources must include all the JS files that demo-simple-rt-task-transformed.html uses.
     var requiredResources = [
-        "https://cdnjs.cloudflare.com/ajax/libs/dropbox.js/4.0.30/Dropbox-sdk.min.js",
+        task_github + "js/jspsych-6.0.5/css/jspsych.css",
         task_github + "js/jspsych-6.0.5/jspsych.js",
         task_github + "js/jspsych-6.0.5/plugins/jspsych-instructions.js",
         task_github + "js/jspsych-6.0.5/plugins/jspsych-fullscreen.js",
@@ -78,26 +78,24 @@ Qualtrics.SurveyEngine.addOnload(function () {
         return selected_data;
     }
 
-    function save_data(dropbox_access_token, save_filename) {
-        console.log("Save data function called.");
+    // you must put your save_data php url here.
+    // like https://users.rcc.uchicago.edu/~kywch/exp_data/save_data.php
+    var save_url = "<PUT YOUR SAVE URL HERE>";
+
+    function save_data(data_dir, file_name) {
         var selected_data = filter_data();
+        console.log("Save data function called.");
         try {
-            var dbx = new Dropbox.Dropbox({
-                fetch: fetch,
-                accessToken: dropbox_access_token
+            jQuery.ajax({
+                type: 'post',
+                cache: false,
+                url: save_url,
+                data: {
+                    data_dir: data_dir,
+                    file_name: file_name + '.csv', // the file type should be added
+                    exp_data: selected_data.csv()
+                }
             });
-            dbx.filesUpload({
-                    path: save_filename,
-                    mode: 'overwrite',
-                    mute: true,
-                    contents: selected_data.csv()
-                })
-                .then(function (response) {
-                    console.log(response);
-                })
-                .catch(function (error) {
-                    console.error(error);
-                });
         } catch (err) {
             console.log("Save data function failed.", err);
         }
@@ -119,11 +117,11 @@ Qualtrics.SurveyEngine.addOnload(function () {
             }
         }
 
+        // PHP-based data save function
+        // save_data needs data_dir and file_name
         // my preference is to include the task id/name and sbj_id in the file name
-        var save_filename = '/' + task_id + '/' + task_id + '_' + sbj_id + '.csv';
-
-        // YOU MUST GET YOUR OWN DROPBOX ACCESS TOKEN to save the file
-        var dropbox_access_token = '<PUT YOUR Dropbox ACCESS TOKEN HERE>';
+        var data_dir = task_id;
+        var file_name = task_id + '_' + sbj_id + '.csv';
 
         // push all the procedures, which are defined in stop-it_main.js to the overall timeline
         var timeline = []; // this array stores the events we want to run in the experiment
@@ -167,7 +165,7 @@ Qualtrics.SurveyEngine.addOnload(function () {
             },
 
             on_finish: function () {
-                save_data(dropbox_access_token, save_filename);
+                save_data(data_dir, file_name);
 
                 /* Change 6: Adding the clean up and continue functions.*/
                 // clear the stage
