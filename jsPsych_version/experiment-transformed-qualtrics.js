@@ -14,7 +14,6 @@ Qualtrics.SurveyEngine.addOnload(function () {
 
     // requiredResources must include all the JS files that demo-simple-rt-task-transformed.html uses.
     var requiredResources = [
-        task_github + "js/jspsych-6.0.5/css/jspsych.css",
         task_github + "js/jspsych-6.0.5/jspsych.js",
         task_github + "js/jspsych-6.0.5/plugins/jspsych-instructions.js",
         task_github + "js/jspsych-6.0.5/plugins/jspsych-fullscreen.js",
