@@ -8,7 +8,7 @@
 
 // define the site that hosts stimuli images
 // usually https://<your-github-username>.github.io/<your-experiment-name>/
-var repo_site = 'https://kywch.github.io/STOP-IT/jsPsych_version/';
+var repo_site = 'https://github.com/vizline/STOP-IT/tree/master/jsPsych_version/';
 
 // locate the stimuli that will be used in the experiment
 var fix_stim = repo_site + 'images/fix.png';
@@ -51,7 +51,7 @@ var NdesignReps_exp = 8;
 // Number of experimental blocks (excluding the first practice block).
 // Note that NexpBl = 0 will still run the practice block
 
-var NexpBL = 4;
+var NexpBL = 3;
 
 
 // ----- CUSTOMISE THE TIME INTERVALS (in milliseconds)-----
@@ -71,7 +71,7 @@ var bFBT = 15000; // break interval between blocks
 // - ID via the URL of the experiment: 'XXXX.html?subject=15'(subject is the current keyword)
 // - determine ID at random with jsPsych.randomization.randomID().
 
-var id = 'random' // use one of these three options: 'participant', 'url', 'random'
+var id = 'participant' // use one of these three options: 'participant', 'url', 'random'
 
 
 // ----- CUSTOMISE SCREEN VARIABLES -----
