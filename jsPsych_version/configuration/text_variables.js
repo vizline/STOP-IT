@@ -15,7 +15,7 @@ page2 = [
   '<p> Powinieneś podejmować szybkie decyzje - aby Twoje czasy reakcji były jak najkrótsze, jednocześnie przy jak najmniejszej ilości błędów (naciskaniu klawiszy gdy strzałka będzie czerwona).</p>'+
   '<p> Zadanie rozpocznie się jednym treningowym blokiem bodźców, gdy będziesz otrzymywać informacje zwrotne na temat poprawności swoich działań. Później, takich informacji zwrotnych już nie będzie.</p>'+
   '<p> Niemniej jednak, po każdym z "właściwych" bloków będzie 15 sekund przerwy - gdy otrzymasz informacje nt. swoich osiągnięć w poprzedniej serii bodżców.</p>' +
-  '<p> To badanie składa się z jednego bloku treningowego - oraz 4 właściwych bloków z bodżcami. Wykonanie całości zadania powinno zająć Ci ok. 6 minut. </p>'
+  '<p> To badanie składa się z jednego bloku treningowego - oraz 3 właściwych bloków z bodżcami. Wykonanie całości zadania powinno zająć Ci ok. 6 minut. </p>'
 ];
 
 // informed consent text
